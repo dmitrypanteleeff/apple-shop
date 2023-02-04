@@ -33,9 +33,12 @@ import { OrdersPageComponent } from './orders-page/orders-page.component';
             pathMatch: 'full'
           },
           {
+            path: 'add',
+            component: AddPageComponent
+          },
+          {
             path: 'login',
             component: LoginPageComponent
-
           },
           {
             path: 'dashboard',
