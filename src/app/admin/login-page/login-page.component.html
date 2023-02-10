@@ -1,1 +1,35 @@
-<p>login-page works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h2>
+    Login as Administrator
+  </h2>
+  <div class="form-control">
+    <label for="email">
+      Email
+    </label>
+    <input id="email" type="email" name="email " formControlName="email"/>
+    <ng-container *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+      <div class="validation">
+        <small *ngIf="Email?.hasError('required')">Enter email</small>
+        <small *ngIf="form.get('email')?.hasError('email')">Enter valid email</small>
+      </div>
+    </ng-container>
+  </div>
+  <div class="form-control">
+    <label for="password">
+      Password
+    </label>
+    <input id="password" type="password" name="password" formControlName="pass"/>
+    <ng-container *ngIf="form.get('pass')?.touched && form.get('pass')?.invalid">
+      <div class="validation">
+        <small *ngIf="form.get('pass')?.hasError('required')">Enter Password</small>
+        <small *ngIf="form.get('pass')?.hasError('minlength')">Password must be at least 6 characters. Now it has {{ form.value.pass.length }}</small>
+      </div>
+    </ng-container>
+  </div>
+
+  <button type="submit"
+    class="btn btn-primary btn-block"
+    [disabled]="form.invalid || submited">
+    Logon
+  </button>
+</form>
