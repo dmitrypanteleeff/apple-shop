@@ -40,7 +40,7 @@ export class AuthService {
     this.setToken(null)
   }
 
-  isAuthenicated() {
+  isAuthenticated() {
     return !!this.token  // если в токене есть какая-то информация, т.е. непустое значение, то преобразовываем к величине Boolean и возвращаем значение true, Если токен равен null, то преобразовываем к величине Boolean и получаем значение false
   }
 }

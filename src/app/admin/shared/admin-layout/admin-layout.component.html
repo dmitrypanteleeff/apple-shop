@@ -4,38 +4,47 @@
       Online shop
     </a>
   </h1>
-  <ul>
-    <li routerLinkAtive="active">
-      <a routerLink="/admin/dashboard">
-        Dashboard
-      </a>
-    </li>
-    <li routerLinkAtive="active">
-      <a routerLink="/admin/add">
-        Add product
-      </a>
-    </li>
-    <li routerLinkAtive="active">
-      <a [routerLink]="['/admin','orders']">
-        Orders
-      </a>
-    </li>
-    <li routerLinkAtive="active">
-      <a [routerLink]="['/admin','dashboard']">
-        Dashboard
-      </a>
-    </li>
-    <li routerLinkAtive="active">
-      <a href="#" (click)="logout($event)">
-        Logout
-      </a>
-    </li>
-    <li routerLinkAtive="active">
-      <a [routerLink]="['/admin','login']">
-        Login
-      </a>
-    </li>
-  </ul>
+
+  <ng-container *ngIf="_auth.isAuthenticated() else templ">
+    <ul>
+      <li routerLinkAtive="active">
+        <a routerLink="/admin/dashboard">
+          Dashboard
+        </a>
+      </li>
+      <li routerLinkAtive="active">
+        <a routerLink="/admin/add">
+          Add product
+        </a>
+      </li>
+      <li routerLinkAtive="active">
+        <a [routerLink]="['/admin','orders']">
+          Orders
+        </a>
+      </li>
+      <li routerLinkAtive="active">
+        <a [routerLink]="['/admin','dashboard']">
+          Dashboard
+        </a>
+      </li>
+      <li routerLinkAtive="active">
+        <a href="#" (click)="logout($event)">
+          Logout
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #templ>
+    <ul>
+      <li routerLinkAtive="active">
+        <a [routerLink]="['/admin','login']">
+          Login
+        </a>
+      </li>
+    </ul>
+  </ng-template>
+
 </nav>
 <div class="container">
   <router-outlet>
