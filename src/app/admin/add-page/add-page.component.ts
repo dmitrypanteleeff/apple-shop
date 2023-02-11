@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-page',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPageComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor() {
+    this.form = new FormGroup({
+      type: new FormControl(null,Validators.required),
+      title: new FormControl(null,Validators.required),
+      photo: new FormControl(null,Validators.required),
+      info: new FormControl(null,Validators.required),
+      price: new FormControl(null,Validators.required)
+    })
+   }
 
   ngOnInit(): void {
+  }
+
+  submit() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    const product = {
+      type: this.form.value.type,
+      title: this.form.value.title,
+      photo: this.form.value.photo,
+      info: this.form.value.info,
+      price: this.form.value.price,
+    }
+
+    console.log(product)
   }
 
 }
