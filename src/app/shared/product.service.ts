@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { fbResponse, productItem } from './interface';
 
 @Injectable({
@@ -48,8 +48,15 @@ export class ProductService {
     return this._http.get<productItem>(`${environment.fbDbUrl}/products/${productId}.json`)
       .pipe(map((res: productItem) => {
         const data = { ...res, date: new Date(res.date) }
-        console.log(data);
         return data;
-      }))
+      }));
+  }
+
+  removeById(productId: string | undefined): Observable<productItem>  {
+    return this._http.delete<productItem>(`${environment.fbDbUrl}/products/${productId}.json`);
+  }
+
+  updateById(product: productItem): Observable<productItem>  {
+    return this._http.patch<productItem>(`${environment.fbDbUrl}/${product.id}.json`, product);
   }
 }

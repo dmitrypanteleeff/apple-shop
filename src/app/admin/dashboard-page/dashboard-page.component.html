@@ -1,1 +1,57 @@
-<p>dashboard-page works!</p>
+<ng-container *ngIf="products?.length; else loadingTempl;">
+  <div>
+    <h2>
+      Dashboard of products
+    </h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Date of creation</th>
+          <th>Info</th>
+          <th>Open</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let good of products; let idx = index;">
+          <tr>
+            <td [innerHTML]="idx+1"></td>
+            <td [innerHTML]="good.title"></td>
+            <td [innerHTML]="good.price"></td>
+            <td [innerHTML]="good.date"></td>
+            <td>
+              <ng-container *ngIf="good.info.length > 70; else infoTempl">
+                <div>
+                  {{ goodInfo(good.info) }}...
+                </div>
+              </ng-container>
+              <ng-template #infoTempl>
+                <div [innerHTML]="good.info"></div>
+              </ng-template>
+            </td>
+            <td>
+              <button type="button" class="btn btn-dark" [routerLink]="['/admin','product',good.id,'edit']">
+                Open
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="remove(good)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+  </div>
+</ng-container>
+<ng-template #loadingTempl>
+  <div class="text-center">
+    Loading...
+  </div>
+</ng-template>
