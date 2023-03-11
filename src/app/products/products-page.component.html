@@ -1,19 +1,23 @@
-<!-- <div class="text-center">
-  <h2>
-    {{ product.title }}
-  </h2>
-  <div>
-    <quill-view-html [content]="product.photo">
+<div class="product__item">
+  <div class="text-center">
+    <h2>
+      {{ product.title }}
+    </h2>
+  </div>
+  <div class="product__img-wrapper">
+    <quill-view-html class="product__img-quill" [content]="product.photo">
 
     </quill-view-html>
   </div>
-  <h2>
-    Price: {{ product.price }}
-  </h2>
-  <button type="button" class="btn btn-dart"  [routerLink]="['/product', product.id ]">
-    Open
-  </button>
-  <button class="btn btn-dart" [routerLink]="['/cart']">
-    Add to cart
-  </button>
-</div> -->
+  <div class="product__btns">
+    <h2 class="text-center">
+      Price: {{ product.price }}
+    </h2>
+    <button type="button" class="btn btn-dark product__btn"  [routerLink]="['/product', product.id ]">
+      Open
+    </button>
+    <button type="button" class="btn btn-dark product__btn" [routerLink]="['/cart']">
+      Add to cart
+    </button>
+  </div>
+</div>

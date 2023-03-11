@@ -1,26 +1,43 @@
-<div class="product__item">
-  <div class="text-center">
-    <h2>
-      {{ product.title }}
-    </h2>
-  </div>
-  <div class="product__img-wrapper">
-    <quill-view-html class="product__img-quill" [content]="product.photo">
+<button type="button" class="btn btn-dark" [routerLink]="['/']">
+  Back
+</button>
 
-    </quill-view-html>
-  </div>
-  <div class="product__btns">
-    <h2 class="text-center">
-      Price: {{ product.price }}
-    </h2>
-    <button type="button" class="btn btn-dark product__btn"  [routerLink]="['/product', product.id ]">
-      Open
-    </button>
-    <button type="button" class="btn btn-dark product__btn" [routerLink]="['/cart']">
-      Add to cart
-    </button>
-  </div>
-</div>
+<ng-container  *ngIf="product$ | async as product else loading">
+  <div class="product__container">
+    <div class="product__item">
+      <div class="item text-center">
+        <h2 [innerHTML]="product.title"></h2>
+      </div>
+      <div class="flex-center">
+        <quill-view-html class="product__img-quill" [content]="product.photo">
 
+        </quill-view-html>
+      </div>
 
+      <div class="item text-center">
+        <h2>
+          Price: {{ product.price }}
+        </h2>
+        <button class="btn btn-dark" [routerLink]="['/cart']">
+          Add to card
+        </button>
+      </div>
+    </div>
+    <div class="product__info">
+      <h2>Information:</h2>
+      <div class="item text-center">
+
+        <quill-view-html [content]="product.info">
+
+        </quill-view-html>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
+<ng-template #loading>
+  <div>
+    Loading...
+  </div>
+</ng-template>
 

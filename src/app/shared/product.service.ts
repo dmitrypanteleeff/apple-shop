@@ -43,4 +43,13 @@ export class ProductService {
       }))
       //.subscribe(goods => { console.log(goods) })
   }
+
+  getById(productId: string): Observable<productItem>  {
+    return this._http.get<productItem>(`${environment.fbDbUrl}/products/${productId}.json`)
+      .pipe(map((res: productItem) => {
+        const data = { ...res, date: new Date(res.date) }
+        console.log(data);
+        return data;
+      }))
+  }
 }

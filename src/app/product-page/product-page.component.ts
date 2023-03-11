@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 import { productItem } from '../shared/interface';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product-page',
@@ -8,12 +11,19 @@ import { productItem } from '../shared/interface';
 })
 export class ProductPageComponent implements OnInit {
 
-  @Input() product: any;
+  product$: Observable<productItem> | undefined;
 
-  constructor() { }
+  constructor(
+    private productServ: ProductService,
+    private _route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.product)
+
+    this.product$ = this._route.params
+      .pipe(switchMap((params) => {
+        return this.productServ.getById(params['id'])
+      }))
   }
 
 }

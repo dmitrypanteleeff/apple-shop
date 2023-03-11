@@ -2,7 +2,7 @@
 <ng-container>
   <div *ngIf="products$ | async as products" class="dashboard">
     <ng-container *ngFor="let product of products">
-      <app-product-page class="box" [product]="product"></app-product-page>
+      <app-products class="box" [product]="product"></app-products>
     </ng-container>
   </div>
 </ng-container>
