@@ -283,4 +283,31 @@ table th {
   }
 }
 
+.product {
+  &__item {
+    .ql-container {
+      height: auto;
+      position: static;
+    }
+    .ql-editor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+      position: static;
+      p {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.ql-snow .ql-editor img {
+  max-height: 200px;
+  width: auto;
+}
+
 

@@ -1,12 +1,13 @@
 export interface fbResponse {
-  name: String,
+  name: string,
 }
 
 export interface productItem {
-  type: String,
-  title: String,
-  photo: String,
-  info: String,
-  price: String,
+  id?: string,
+  type: string,
+  title: string,
+  photo: string,
+  info: string,
+  price: string,
   date: Date
 }

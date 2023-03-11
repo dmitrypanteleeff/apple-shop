@@ -10,6 +10,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill'
 import { AuthIntercepter } from './shared/auth.intercepter';
+import { ProductsPageComponent } from './products/products-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthIntercepter } from './shared/auth.intercepter';
     MainLayoutComponent,
     CartPageComponent,
     MainPageComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ProductsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { fbResponse, productItem } from './interface';
 
 @Injectable({
@@ -23,5 +23,24 @@ export class ProductService {
         return obj;
       }
     ))
+  }
+
+  getAll(): Observable<productItem[]>  {
+    return this._http.get<productItem[]>(`${environment.fbDbUrl}/products.json`)
+      .pipe(map((res: any) => {
+        console.log('getAll res:', res);
+        //const data = res;
+        //return data;
+        // Object.keys(res) // получаем массив id товаров
+        //   .map(key => ({
+        //     ...res[key],
+        //     id: key,
+        //     date: new Date(res[key].date)
+        // }))
+        const data = Object.keys(res)
+          .map((key) => ({ id: key, ...res[key], date: new Date(res[key].date) }));
+        return data;
+      }))
+      //.subscribe(goods => { console.log(goods) })
   }
 }

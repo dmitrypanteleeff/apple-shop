@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../shared/product.service';
+import { Observable } from 'rxjs';
+import { productItem } from '../shared/interface';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  products$: Observable<productItem[]> | undefined;
 
-  ngOnInit(): void {
+  constructor(private productServ: ProductService) {
+
+  }
+
+  ngOnInit() {
+    this.getRequest();
+  }
+
+  private getRequest() {
+    // this.productServ.getAll().subscribe((goods) => {
+    //   this.products$ = goods;
+    //   console.log(goods)
+    // })
+    this.products$ = this.productServ.getAll();
   }
 
 }
