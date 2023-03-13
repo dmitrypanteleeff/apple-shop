@@ -11,9 +11,10 @@ import { ProductService } from 'src/app/shared/product.service';
 export class DashboardPageComponent implements OnInit {
 
   //product$: Observable<productItem[]> | undefined;
-  products: productItem[] | undefined;
+  products!: productItem[];
   pSub: Subscription | undefined;
   rSub: Subscription | undefined;
+  productName: string | undefined;
 
   constructor(
     private productServ: ProductService
