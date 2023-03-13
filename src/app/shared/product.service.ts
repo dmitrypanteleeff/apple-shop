@@ -57,6 +57,6 @@ export class ProductService {
   }
 
   updateById(product: productItem): Observable<productItem>  {
-    return this._http.patch<productItem>(`${environment.fbDbUrl}/${product.id}.json`, product);
+    return this._http.patch<productItem>(`${environment.fbDbUrl}/products/${product.id}.json`, product);
   }
 }
