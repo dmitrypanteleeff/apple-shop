@@ -11,9 +11,10 @@ import { productItem } from '../shared/interface';
 export class MainPageComponent implements OnInit {
 
   products$: Observable<productItem[]> | undefined;
+  type!: string;
 
-  constructor(private productServ: ProductService) {
-
+  constructor(public productServ: ProductService) {
+    //this.productServ.setType(this.type);
   }
 
   ngOnInit() {

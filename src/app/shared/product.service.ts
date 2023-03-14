@@ -9,6 +9,8 @@ import { fbResponse, productItem } from './interface';
 })
 export class ProductService {
 
+  type: string = 'Phone';
+
   constructor(private _http: HttpClient) { }
 
   create(product:productItem ) {
@@ -58,5 +60,9 @@ export class ProductService {
 
   updateById(product: productItem): Observable<productItem>  {
     return this._http.patch<productItem>(`${environment.fbDbUrl}/products/${product.id}.json`, product);
+  }
+
+  setType(type: string): void {
+    this.type = type;
   }
 }

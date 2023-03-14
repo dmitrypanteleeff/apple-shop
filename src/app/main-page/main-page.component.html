@@ -1,7 +1,7 @@
 
 <ng-container>
   <div *ngIf="products$ | async as products" class="dashboard">
-    <ng-container *ngFor="let product of products">
+    <ng-container *ngFor="let product of products | sorting : productServ.type">
       <app-products class="box" [product]="product"></app-products>
     </ng-container>
   </div>
