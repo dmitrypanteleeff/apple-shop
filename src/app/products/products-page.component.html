@@ -16,7 +16,7 @@
     <button type="button" class="btn btn-dark product__btn"  [routerLink]="['/product', product.id ]">
       Open
     </button>
-    <button type="button" class="btn btn-dark product__btn" [routerLink]="['/cart']">
+    <button type="button" class="btn btn-dark product__btn" [routerLink]="['/cart']" (click)="addToCart(product)">
       Add to cart
     </button>
   </div>

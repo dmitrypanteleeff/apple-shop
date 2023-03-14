@@ -1,1 +1,47 @@
-<p>cart-page works!</p>
+<ng-container *ngIf="products.length > 0; else emptyTempl">
+  <div class="container">
+    <h2>Your order</h2>
+    <table>
+      <tbody>
+        <ng-container *ngFor="let product of products; let i = index;">
+          <tr>
+            <td>
+              {{ i + 1 }}
+            </td>
+            <td>
+              <div [innerHTML]="product.type">
+
+              </div>
+            </td>
+            <td>
+              <div [innerHTML]="product.title">
+
+              </div>
+            </td>
+            <td>
+              <div [innerHTML]="product.price">
+
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <hr>
+    <b class="right">
+      Total {{ totalPrice }}
+    </b>
+  </div>
+
+</ng-container>
+
+<ng-template #emptyTempl>
+  <h2 class="text-center">Cart is empty. Select product</h2>
+</ng-template>
+
+

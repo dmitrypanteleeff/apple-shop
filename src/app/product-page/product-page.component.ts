@@ -24,6 +24,16 @@ export class ProductPageComponent implements OnInit {
       .pipe(switchMap((params) => {
         return this.productServ.getById(params['id'])
       }))
+
+    console.log(this.product$)
+  }
+
+  addToCart(product: productItem): void {
+    product = {
+      ...product,
+      id: this._route.snapshot.params['id']
+    }
+    this.productServ.addProduct(product);
   }
 
 }

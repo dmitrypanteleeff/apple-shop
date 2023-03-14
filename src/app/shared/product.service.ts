@@ -10,6 +10,7 @@ import { fbResponse, productItem } from './interface';
 export class ProductService {
 
   type: string = 'Phone';
+  cartProducts: productItem[] = [];
 
   constructor(private _http: HttpClient) { }
 
@@ -64,5 +65,13 @@ export class ProductService {
 
   setType(type: string): void {
     this.type = type;
+  }
+
+  addProduct(product: productItem): void {
+    this.cartProducts.push(product)
+  }
+
+  removeProduct(product: productItem): void {
+    this.cartProducts = this.cartProducts.filter(item => item !== product)
   }
 }
