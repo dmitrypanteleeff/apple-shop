@@ -11,3 +11,14 @@ export interface productItem {
   price: string,
   date: Date
 }
+
+export interface orderItem {
+  id?: string,
+  name: string,
+  phone: string,
+  address: string,
+  payment: string,
+  price: number,
+  products: productItem[],
+  date: Date
+}

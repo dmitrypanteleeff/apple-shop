@@ -36,6 +36,81 @@
     <b class="right">
       Total {{ totalPrice }}
     </b>
+
+
+    <h2 class="text-center">
+      Delivery
+    </h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <div class="form-control">
+        <label for="name">
+          Name
+        </label>
+        <input id="name"
+          type="text"
+          name="name"
+          formControlName="name"/>
+        <ng-container *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+          <div class="validation">
+            <small *ngIf="form.get('name')?.hasError('required')">
+              Enter your name
+            </small>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="form-control">
+        <label for="phone">
+          Phone
+        </label>
+        <input id="phone"
+          type="phone"
+          name="phone"
+          formControlName="phone"/>
+        <ng-container *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
+          <div class="validation">
+            <small *ngIf="form.get('phone')?.hasError('required')">
+              Enter your phone
+            </small>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="form-control">
+        <label for="address">
+          Address
+        </label>
+        <input id="address"
+          type="text"
+          name="address"
+          formControlName="address"/>
+        <ng-container *ngIf="form.get('address')?.touched && form.get('address')?.invalid">
+          <div class="validation">
+            <small *ngIf="form.get('address')?.hasError('required')">
+              Enter your address
+            </small>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="form-control">
+        <label for="payment">
+          Payment method
+        </label>
+        <select formControlName="payment">
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+        </select>
+      </div>
+
+      <button type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="form.invalid || submitted">
+        Add
+      </button>
+    </form>
+
   </div>
 
 </ng-container>
