@@ -14,6 +14,7 @@ export class CartPageComponent implements OnInit {
 
   products!: productItem[];
   totalPrice: number = 0;
+  added: string = '';
 
   form: FormGroup;
   submitted: boolean = false;
@@ -70,6 +71,7 @@ export class CartPageComponent implements OnInit {
 
     this.orderServ.create(order).subscribe(res => {
       this.form.reset();
+      this.added = 'Delivery is framed'
       this.submitted = false;
     })
 

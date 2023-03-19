@@ -1,1 +1,55 @@
-<p>orders-page works!</p>
+<ng-container *ngIf="orders?.length; else loadingTempl;">
+  <div>
+    <h2>
+      Dashboard of products
+    </h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Payment</th>
+          <th>Price</th>
+          <th>Products</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let good of orders; let idx = index">
+          <tr>
+            <td [innerHTML]="idx+1"></td>
+            <td [innerHTML]="good.name"></td>
+            <td [innerHTML]="good.phone"></td>
+            <td [innerHTML]="good.address"></td>
+            <td [innerHTML]="good.payment"></td>
+            <td [innerHTML]="good.price"></td>
+            <td>
+              <ng-container *ngFor="let item of good.products; let id = index">
+                <div>
+                  <span>{{ id + 1 }} )&nbsp;</span>
+                  <span [innerHTML]="item.title"></span>:
+                  <span [innerHTML]="item.type"></span>
+                </div>
+              </ng-container>
+            </td>
+            <td>{{ good.date | date : 'medium' }}</td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="remove(good)">
+                Complited
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+  </div>
+</ng-container>
+<ng-template #loadingTempl>
+  <div class="text-center">
+    Loading...
+  </div>
+</ng-template>

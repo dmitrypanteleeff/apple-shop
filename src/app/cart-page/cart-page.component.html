@@ -41,6 +41,13 @@
     <h2 class="text-center">
       Delivery
     </h2>
+
+    <ng-container *ngIf="added">  <!-- added не является null -->
+      <div class="text-center text-danger">
+        {{ added }}
+      </div>
+    </ng-container>
+
     <form [formGroup]="form" (ngSubmit)="submit()">
 
       <div class="form-control">
