@@ -23,14 +23,12 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.pSub = this.productServ.getAll().subscribe((goods) => {
       this.products = goods;
-      console.log(goods)
     })
   }
 
   ngOnDestroy(): void {
     if (this.pSub) {
       this.pSub.unsubscribe();
-      console.log('unsubscribe')
     }
     if (this.rSub) {
       this.rSub.unsubscribe();

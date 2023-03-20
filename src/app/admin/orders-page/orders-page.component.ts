@@ -22,14 +22,12 @@ export class OrdersPageComponent implements OnInit {
   ngOnInit(): void {
     this.pSub = this.orderServ.getAll().subscribe((goods) => {
       this.orders = goods;
-      console.log(goods)
     })
   }
 
   ngOnDestroy(): void {
     if (this.pSub) {
       this.pSub.unsubscribe();
-      console.log('unsubscribe')
     }
     if (this.rSub) {
       this.rSub.unsubscribe();

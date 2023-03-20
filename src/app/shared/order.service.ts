@@ -22,7 +22,6 @@ export class OrderService {
           date: new Date(order.date),
           id: res.name
         }
-        console.log('order service', obj);
         return obj;
       }
     ))
@@ -31,7 +30,6 @@ export class OrderService {
   getAll(): Observable<orderItem[]>  {
     return this._http.get<orderItem[]>(`${environment.fbDbUrl}/orders.json`)
       .pipe(map((res: any) => {
-        console.log('getAll res:', res);
         //const data = res;
         //return data;
         // Object.keys(res) // получаем массив id товаров

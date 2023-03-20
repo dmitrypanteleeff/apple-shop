@@ -50,8 +50,6 @@ export class AddPageComponent implements OnInit {
       this.submitted = false;
       this._router.navigate(['/']);
     } );
-
-    console.log(product)
   }
 
 }

@@ -24,8 +24,6 @@ export class ProductPageComponent implements OnInit {
       .pipe(switchMap((params) => {
         return this.productServ.getById(params['id'])
       }))
-
-    console.log(this.product$)
   }
 
   addToCart(product: productItem): void {

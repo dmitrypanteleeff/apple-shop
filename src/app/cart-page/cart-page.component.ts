@@ -37,9 +37,7 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = this.productServ.cartProducts;
-    console.log('this.products.length', this.products.length);
     for (let i = 0; i < this.products.length; i++) {
-      console.log(this.products[i].price);
       this.totalPrice = this.totalPrice + +this.products[i].price;
     }
   }
@@ -81,6 +79,5 @@ export class CartPageComponent implements OnInit {
     //   this._router.navigate(['/']);
     // } );
 
-    console.log(order)
   }
 }

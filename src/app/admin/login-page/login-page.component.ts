@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.form)
+
   }
 
   submit() {
@@ -49,10 +49,8 @@ export class LoginPageComponent implements OnInit {
       this.form.reset();
       this._router.navigate(['/admin', 'dashboard']);
       this.submitted = false;
-      console.log(res)
     }, (error) => {
       this.submitted = false;
-      console.log(error)
     })
 
   }
